@@ -42,13 +42,6 @@ public class InGameUI : MonoBehaviour
         }
         Time.timeScale = 1;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void PauseGame()
     {
         Time.timeScale = 0;

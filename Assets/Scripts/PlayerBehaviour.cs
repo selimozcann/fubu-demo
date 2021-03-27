@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
 public class PlayerBehaviour : MonoBehaviour
 {
+    private Animator _playerAnim;
     public float speed;
     VariableJoystick variableJoystick;
     public GameObject bombPrefab;
@@ -24,8 +24,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         variableJoystick = FindObjectOfType<VariableJoystick>();
+        _playerAnim = transform.GetChild(0).GetComponent<Animator>();
     }
-
     public void Update()
     {
         if (isHoldingJoystick)
@@ -38,11 +38,6 @@ public class PlayerBehaviour : MonoBehaviour
             transform.LookAt(transform.position + direction);
         }
     }
-
-
-
-
-
     public GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
     bool isHoldingJoystick;
@@ -63,7 +58,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
     }
-    public void onJoystickUp()
+    public void OnJoystickUp()
     {
         if (isHoldingJoystick)
         {
@@ -100,7 +95,6 @@ public class PlayerBehaviour : MonoBehaviour
         rangeSprite.transform.position = res[res.Length - 1];
         transform.LookAt(rangeSprite.transform.position);
     }
-
     private void OnDrawGizmos()
     {
         // Gizmos.DrawWireSphere(transform.position, lootRange);

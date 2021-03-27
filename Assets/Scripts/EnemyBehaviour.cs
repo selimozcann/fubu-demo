@@ -9,18 +9,17 @@ public class EnemyBehaviour : EnemyAI
     public Transform[] roundPoses;
     Coroutine roundAroundCoroutine;
     Coroutine goStoneCoroutine;
-    PlayerBehaviour p;
+    PlayerBehaviour _playerBehavior;
     Vector3 startPos;
     Quaternion startRot;
     public LayerMask whatIsTrapTrigger;
     public LayerMask whatIsTrap;
     public float checkTrapRange;
-
     void Start()
     {
         startPos = transform.position;
         startRot = transform.rotation;
-        p = FindObjectOfType<PlayerBehaviour>();
+        _playerBehavior = FindObjectOfType<PlayerBehaviour>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         roundAroundCoroutine = StartCoroutine(roundAroundPoses());
     }
@@ -80,7 +79,6 @@ public class EnemyBehaviour : EnemyAI
         CheckTrapTrigger();
         CheckTrap();
     }
-
     bool isFollowing;
     internal override void DoAttack()
     {
@@ -93,7 +91,7 @@ public class EnemyBehaviour : EnemyAI
         {
             isFollowing = true;
             StopCoroutine(goStoneCoroutine);
-            navMeshAgent.SetDestination(p.transform.position);
+            navMeshAgent.SetDestination(_playerBehavior.transform.position);
             Debug.Log("Follow");
         }
         else
@@ -101,12 +99,11 @@ public class EnemyBehaviour : EnemyAI
             isFollowing = true;
             if (roundAroundCoroutine != null)
                 StopCoroutine(roundAroundCoroutine);
-            navMeshAgent.SetDestination(p.transform.position);
+            navMeshAgent.SetDestination(_playerBehavior.transform.position);
 
             Debug.Log("Follow");
         }
     }
-
     internal override void DoIdle()
     {
         if (isFollowing)
@@ -132,7 +129,6 @@ public class EnemyBehaviour : EnemyAI
         goStoneCoroutine = StartCoroutine(goToStone(g));
 
     }
-
     IEnumerator goToStone(GameObject stone)
     {
         navMeshAgent.SetDestination(stone.transform.position);
