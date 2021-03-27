@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\selim\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\selim\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_fubu-demo.1464018595.00" t="ExcludeRecursive" />
+    <e p="C:\Users\selim\Desktop\Fubu Games\Fubu Games\fubu-demo" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="1984 AI Line Of Sight" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Demo" t="Include">
+              <e p="PlayerMovement.cs" t="Include" />
+              <e p="PlayerMovement2D.cs" t="Include" />
+              <e p="RedBox2DAI.cs" t="Include" />
+              <e p="RedSphereAI.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="LineOfSightEditor.cs" t="Include" />
+            </e>
+            <e p="EnemyAI.cs" t="Include" />
+            <e p="LineOfSight.cs" t="Include" />
+          </e>
+        </e>
+        <e p="EnemyBehaviour.cs" t="Include" />
+        <e p="ITrapTrigger.cs" t="Include" />
+        <e p="Joystick Pack" t="Include">
+          <e p="Examples" t="Include">
+            <e p="JoystickPlayerExample.cs" t="Include" />
+            <e p="JoystickSetterExample.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Base" t="Include">
+              <e p="Joystick.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="DynamicJoystickEditor.cs" t="Include" />
+              <e p="FloatingJoystickEditor.cs" t="Include" />
+              <e p="JoystickEditor.cs" t="Include" />
+              <e p="VariableJoystickEditor.cs" t="Include" />
+            </e>
+            <e p="Joysticks" t="Include">
+              <e p="DynamicJoystick.cs" t="Include" />
+              <e p="FixedJoystick.cs" t="Include" />
+              <e p="FloatingJoystick.cs" t="Include" />
+              <e p="VariableJoystick.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="NavMesh-Tutorial-master" t="Include">
+          <e p="NavMesh Example Project" t="Include">
+            <e p="Assets" t="Include">
+              <e p="NavMeshComponents" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="NavMeshComponentsGUIUtility.cs" t="Include" />
+                  <e p="NavMeshLinkEditor.cs" t="Include" />
+                  <e p="NavMeshModifierEditor.cs" t="Include" />
+                  <e p="NavMeshModifierVolumeEditor.cs" t="Include" />
+                  <e p="NavMeshSurfaceEditor.cs" t="Include" />
+                </e>
+                <e p="Scripts" t="Include">
+                  <e p="NavMeshLink.cs" t="Include" />
+                  <e p="NavMeshModifier.cs" t="Include" />
+                  <e p="NavMeshModifierVolume.cs" t="Include" />
+                  <e p="NavMeshSurface.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="ProjectSettings" t="Include">
+              <e p="ProjectVersion.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="oyun içi paketler" t="Include">
+          <e p="Epic Toon FX" t="Include">
+            <e p="Demo" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="ETFXButtonScript.cs" t="Include" />
+                <e p="ETFXFireProjectile.cs" t="Include" />
+                <e p="ETFXLoopScript.cs" t="Include" />
+                <e p="ETFXMouseOrbit.cs" t="Include" />
+                <e p="ETFXProjectileScript.cs" t="Include" />
+                <e p="ETFXSceneManager.cs" t="Include" />
+                <e p="ETFXTarget.cs" t="Include" />
+                <e p="VFX Library" t="Include">
+                  <e p="ParticleEffectsLibrary.cs" t="Include" />
+                  <e p="PEButtonScript.cs" t="Include" />
+                  <e p="UICanvasManager.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Prefabs" t="Include">
+              <e p="Combat" t="Include">
+                <e p="Combat FX.txt" t="Include" />
+              </e>
+              <e p="Environment" t="Include">
+                <e p="Environment FX.txt" t="Include" />
+              </e>
+              <e p="Interactive" t="Include">
+                <e p="Interactive FX.txt" t="Include" />
+              </e>
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="ETFXLightFade.cs" t="Include" />
+              <e p="ETFXPitchRandomizer.cs" t="Include" />
+              <e p="ETFXRotation.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Polygon Arsenal" t="Include">
+            <e p="Demo" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="PolygonBeamScript.cs" t="Include" />
+                <e p="PolygonButtonScript.cs" t="Include" />
+                <e p="PolygonEffectCycler.cs" t="Include" />
+                <e p="PolygonFireProjectile.cs" t="Include" />
+                <e p="PolygonLoopScript.cs" t="Include" />
+                <e p="PolygonOrbit.cs" t="Include" />
+                <e p="PolygonProjectileScript.cs" t="Include" />
+                <e p="PolygonSceneSelect.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Polygon Arsenal 2.0 - Documentation.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="PolygonBeamStatic.cs" t="Include" />
+              <e p="PolygonLightFade.cs" t="Include" />
+              <e p="PolygonLightFlicker.cs" t="Include" />
+              <e p="PolygonRotation.cs" t="Include" />
+              <e p="PolygonSoundSpawn.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="Standard" t="Include">
+                <e p="PolyLitSurface.shader" t="Include" />
+                <e p="PolyRimLightSelective.shader" t="Include" />
+                <e p="PolyRimLightSolid.shader" t="Include" />
+                <e p="PolyRimLightTransparent.shader" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="PlayerBehaviour.cs" t="Include" />
+        <e p="Plugins" t="Include">
+          <e p="GitHub" t="Include">
+            <e p="Editor" t="Include">
+              <e p="credits.txt" t="Include" />
+              <e p="eula.txt" t="Include" />
+              <e p="ExtensionLoader.cs" t="Include" />
+              <e p="UnityAPIWrapper.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="RigidbodyExtension" t="Include">
+          <e p="Example" t="Include">
+            <e p="DrawLine.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="RigidbodyExtension.cs" t="Include" />
+          </e>
+        </e>
+        <e p="StoneBehaviour.cs" t="Include" />
+        <e p="TrapTypeOne.cs" t="Include" />
+      </e>
+      <e p="fubu-demo.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

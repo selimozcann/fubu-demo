@@ -24,18 +24,22 @@ public class EnemyBehaviour : EnemyAI
         navMeshAgent = GetComponent<NavMeshAgent>();
         roundAroundCoroutine = StartCoroutine(roundAroundPoses());
     }
-    public void checkTrapTrigger()
+    public void CheckTrapTrigger()
     {
         Collider[] c = Physics.OverlapSphere(transform.position, checkTrapRange, whatIsTrapTrigger);
         if (c.Length > 0)
         {
             lineOfSight.gameObject.SetActive(false);
-            navMeshAgent.enabled = false;
+            Destroy(this.gameObject,0.4f);
+            // navMeshAgent.enabled = false;
+            // this.gameObject.SetActive(false);
+            // Other method this Script enabled false
+            // this.gameObject.GetComponent<EnemyBehaviour>().enabled = false;      
             StopAllCoroutines();
             c[0].GetComponent<ITrapTrigger>().trigger();
         }
     }
-    public void checkTrap()
+    public void CheckTrap()
     {
         Collider[] c = Physics.OverlapSphere(transform.position, checkTrapRange, whatIsTrap);
         if (c.Length > 0)
@@ -73,8 +77,8 @@ public class EnemyBehaviour : EnemyAI
     // Update is called once per frame
     void Update()
     {
-        checkTrapTrigger();
-        checkTrap();
+        CheckTrapTrigger();
+        CheckTrap();
     }
 
     bool isFollowing;
@@ -85,19 +89,20 @@ public class EnemyBehaviour : EnemyAI
 
     internal override void DoFollow()
     {
-        if (isTriggered)
+        if (isTriggered && this.gameObject != null)
         {
+            isFollowing = true;
             StopCoroutine(goStoneCoroutine);
             navMeshAgent.SetDestination(p.transform.position);
-            isFollowing = true;
             Debug.Log("Follow");
         }
         else
         {
+            isFollowing = true;
             if (roundAroundCoroutine != null)
                 StopCoroutine(roundAroundCoroutine);
             navMeshAgent.SetDestination(p.transform.position);
-            isFollowing = true;
+
             Debug.Log("Follow");
         }
     }
