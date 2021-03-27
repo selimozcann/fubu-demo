@@ -25,6 +25,7 @@ public class PlayerBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         variableJoystick = FindObjectOfType<VariableJoystick>();
         _playerAnim = transform.GetChild(0).GetComponent<Animator>();
+        _playerAnim.SetBool("idle",true);
     }
     public void Update()
     {
@@ -41,8 +42,11 @@ public class PlayerBehaviour : MonoBehaviour
     public GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
     bool isHoldingJoystick;
-    public void onJoystickDown()
+    public void OnJoystickDown()
     {
+        Debug.Log("Working");
+        _playerAnim.SetBool("idle",false);
+        _playerAnim.SetBool("isRun",true);
         m_PointerEventData = new PointerEventData(null);
         m_PointerEventData.position = Input.mousePosition;
         List<RaycastResult> results = new List<RaycastResult>();
@@ -50,9 +54,9 @@ public class PlayerBehaviour : MonoBehaviour
         foreach (RaycastResult result in results)
         {
             if (result.gameObject.name == "BombButton")
-            {
-            //    shootCam.SetActive(false);
-             //   shootCam.SetActive(true);
+            { 
+                //  shootCam.SetActive(false);
+                //  shootCam.SetActive(true);
                 rangeSprite.SetActive(true);
                 isHoldingJoystick = true;
             }
@@ -60,8 +64,11 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void OnJoystickUp()
     {
+        _playerAnim.SetBool("isRun",false);
+        _playerAnim.SetBool("idle",true);
         if (isHoldingJoystick)
         {
+            Debug.Log("OnJoysticUp");
             rangeSprite.SetActive(false);
            // walkCam.SetActive(false);
             //walkCam.SetActive(true);
@@ -75,6 +82,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void DrawMovementLine()
     {
         direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
+       
         /*  if (variableJoystick.Vertical > 0)
           {
               throwForce += 1;

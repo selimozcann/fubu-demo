@@ -29,13 +29,13 @@ public class EnemyBehaviour : EnemyAI
         if (c.Length > 0)
         {
             lineOfSight.gameObject.SetActive(false);
-            Destroy(this.gameObject,0.4f);
-            // navMeshAgent.enabled = false;
-            // this.gameObject.SetActive(false);
+            navMeshAgent.enabled = false;
+            this.gameObject.SetActive(false);
             // Other method this Script enabled false
             // this.gameObject.GetComponent<EnemyBehaviour>().enabled = false;      
             StopAllCoroutines();
             c[0].GetComponent<ITrapTrigger>().trigger();
+            // Destroy(this.gameObject,0.4f);
         }
     }
     public void CheckTrap()
@@ -89,9 +89,9 @@ public class EnemyBehaviour : EnemyAI
     {
         if (isTriggered && this.gameObject != null)
         {
-            isFollowing = true;
             StopCoroutine(goStoneCoroutine);
             navMeshAgent.SetDestination(_playerBehavior.transform.position);
+            isFollowing = true;
             Debug.Log("Follow");
         }
         else
@@ -112,6 +112,7 @@ public class EnemyBehaviour : EnemyAI
             roundAroundCoroutine = StartCoroutine(roundAroundPoses());
         }
         Debug.Log("idle");
+
     }
 
     internal override void DoPatrol()
