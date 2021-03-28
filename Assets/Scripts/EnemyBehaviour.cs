@@ -5,16 +5,18 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : EnemyAI
 {
-    NavMeshAgent navMeshAgent;
-    public Transform[] roundPoses;
-    Coroutine roundAroundCoroutine;
-    Coroutine goStoneCoroutine;
-    PlayerBehaviour _playerBehavior;
-    Vector3 startPos;
-    Quaternion startRot;
     public LayerMask whatIsTrapTrigger;
     public LayerMask whatIsTrap;
     public float checkTrapRange;
+    public Transform[] roundPoses;
+    private NavMeshAgent navMeshAgent;
+    private Coroutine roundAroundCoroutine;
+    private Coroutine goStoneCoroutine;
+    private PlayerBehaviour _playerBehavior;
+    private Vector3 startPos;
+    private Quaternion startRot;
+    private Animator _enemyAnim;
+    private bool isTriggered;
     void Start()
     {
         startPos = transform.position;
@@ -22,6 +24,7 @@ public class EnemyBehaviour : EnemyAI
         _playerBehavior = FindObjectOfType<PlayerBehaviour>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         roundAroundCoroutine = StartCoroutine(roundAroundPoses());
+        _enemyAnim = transform.GetChild(0).GetComponent<Animator>();
     }
     public void CheckTrapTrigger()
     {
@@ -54,10 +57,10 @@ public class EnemyBehaviour : EnemyAI
             {
                 navMeshAgent.SetDestination(roundPoses[i].position);
 
-                while (Vector3.Distance(roundPoses[i].position, transform.position) > 1f)
-                {
-                    yield return null;
-                }
+                //while (Vector3.Distance(roundPoses[i].position, transform.position) > 1f)
+                //{
+                    // yield return null;
+                // }
                 yield return new WaitForSeconds(1);
             }
             roundAroundCoroutine = StartCoroutine(roundAroundPoses());
@@ -76,6 +79,7 @@ public class EnemyBehaviour : EnemyAI
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isTriggered);
         CheckTrapTrigger();
         CheckTrap();
     }
@@ -83,12 +87,15 @@ public class EnemyBehaviour : EnemyAI
     internal override void DoAttack()
     {
         Debug.Log("enemy attacked");
+        // Enemy attacked
     }
-
-    internal override void DoFollow()
+    internal  override void DoFollow()
     {
-        if (isTriggered && this.gameObject != null)
+        if (isTriggered)
         {
+            Debug.Log("Working");
+            _enemyAnim.SetBool("enemyIdle",false);
+            _enemyAnim.SetBool("enemyIsRun",true);
             StopCoroutine(goStoneCoroutine);
             navMeshAgent.SetDestination(_playerBehavior.transform.position);
             isFollowing = true;
@@ -96,11 +103,12 @@ public class EnemyBehaviour : EnemyAI
         }
         else
         {
+            _enemyAnim.SetBool("enemyIdle",false);
+            _enemyAnim.SetBool("enemyIsRun",true);
             isFollowing = true;
             if (roundAroundCoroutine != null)
                 StopCoroutine(roundAroundCoroutine);
             navMeshAgent.SetDestination(_playerBehavior.transform.position);
-
             Debug.Log("Follow");
         }
     }
@@ -112,32 +120,42 @@ public class EnemyBehaviour : EnemyAI
             roundAroundCoroutine = StartCoroutine(roundAroundPoses());
         }
         Debug.Log("idle");
-
+        if ((startPos.x) - (this.gameObject.transform.position.x) < 0.05f && (startPos.z) - (this.gameObject.transform.position.z) < 0.05f)
+        {
+            _enemyAnim.SetBool("enemyIsRun",false);
+            _enemyAnim.SetBool("enemyIdle",true);
+        }
     }
-
     internal override void DoPatrol()
     {
         Debug.Log("patrol");
     }
-    bool isTriggered;
     public void trigger(GameObject g)
     {
         Debug.Log("triggered");
         isTriggered = true;
         if (roundAroundCoroutine != null)
+        {
             StopCoroutine(roundAroundCoroutine);
-
+        }
         goStoneCoroutine = StartCoroutine(goToStone(g));
+    }
 
+    private void GoStone()
+    {
+        _enemyAnim.SetBool("enemyIdle",false);
+        _enemyAnim.SetBool("enemyIsRun",true);
     }
     IEnumerator goToStone(GameObject stone)
     {
+        yield return new WaitForSeconds(0.1f);
         navMeshAgent.SetDestination(stone.transform.position);
         while (navMeshAgent.remainingDistance > 0.1f)
         {
             yield return null;
         }
         yield return new WaitForSeconds(4);
+        Destroy(stone);
         roundAroundCoroutine = StartCoroutine(roundAroundPoses());
         isTriggered = false;
     }

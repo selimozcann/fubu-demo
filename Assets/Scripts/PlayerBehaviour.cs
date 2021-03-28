@@ -44,7 +44,7 @@ public class PlayerBehaviour : MonoBehaviour
     bool isHoldingJoystick;
     public void OnJoystickDown()
     {
-        Debug.Log("Working");
+         Debug.Log("Working");
         _playerAnim.SetBool("idle",false);
         _playerAnim.SetBool("isRun",true);
         m_PointerEventData = new PointerEventData(null);
